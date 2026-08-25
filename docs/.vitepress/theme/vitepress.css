@@ -1,0 +1,357 @@
+/**
+ * The bridge: VitePress's `--vp-*` variables, re-pointed at placepin tokens.
+ *
+ * Nothing here invents a colour. Every value resolves to something in
+ * `tokens.css`, so the two sites cannot drift — editing the palette in
+ * placepin-web and copying it across is enough, and no rule in this file needs
+ * revisiting.
+ *
+ * Written as variable re-pointing rather than component overrides on purpose:
+ * a VitePress minor that reshuffles its internals still lands correctly,
+ * because the theme reads these vars rather than the classes.
+ */
+
+/* ---------- surfaces & ink ---------- */
+
+:root {
+  --vp-c-bg: var(--bg);
+  --vp-c-bg-alt: var(--panel-sunk);
+  --vp-c-bg-soft: var(--panel-sunk);
+  --vp-c-bg-elv: var(--panel);
+
+  --vp-c-text-1: var(--ink);
+  --vp-c-text-2: var(--ink-soft);
+  --vp-c-text-3: var(--faint);
+
+  --vp-c-divider: var(--rule);
+  --vp-c-border: var(--rule);
+  --vp-c-gutter: var(--rule);
+
+  --vp-c-default-1: var(--ink-soft);
+  --vp-c-default-2: var(--faint);
+  --vp-c-default-3: var(--rule);
+  --vp-c-default-soft: var(--panel-sunk);
+
+  /* Teal is the interface accent; terracotta is reserved for the leaf tier and
+     the full stop, and stays out of general chrome so it keeps meaning
+     "most specific" wherever it appears. */
+  --vp-c-brand-1: var(--accent);
+  --vp-c-brand-2: color-mix(in srgb, var(--accent) 82%, var(--ink));
+  --vp-c-brand-3: color-mix(in srgb, var(--accent) 88%, black);
+  --vp-c-brand-soft: var(--accent-soft);
+
+  --vp-c-tip-1: var(--accent);
+  --vp-c-tip-soft: var(--accent-soft);
+  --vp-c-note-1: var(--ink-soft);
+  --vp-c-note-soft: var(--panel-sunk);
+  --vp-c-warning-1: var(--leaf);
+  --vp-c-warning-soft: color-mix(in srgb, var(--leaf) 12%, transparent);
+  --vp-c-danger-1: var(--leaf);
+  --vp-c-danger-soft: color-mix(in srgb, var(--leaf) 12%, transparent);
+  --vp-c-important-1: var(--sage);
+  --vp-c-important-soft: color-mix(in srgb, var(--sage) 12%, transparent);
+
+  --vp-c-shadow-1: rgba(22, 35, 46, 0.08);
+  --vp-c-shadow-2: rgba(22, 35, 46, 0.12);
+  --vp-c-shadow-3: rgba(22, 35, 46, 0.16);
+}
+
+.dark {
+  --vp-c-brand-2: color-mix(in srgb, var(--accent) 86%, white);
+  --vp-c-brand-3: color-mix(in srgb, var(--accent) 70%, white);
+  --vp-c-shadow-1: rgba(0, 0, 0, 0.32);
+  --vp-c-shadow-2: rgba(0, 0, 0, 0.45);
+  --vp-c-shadow-3: rgba(0, 0, 0, 0.55);
+}
+
+/* ---------- type ---------- */
+
+:root {
+  /* placepin sets --sans to the serif stack. That is not a typo: the app reads
+     as an instrument rather than a dashboard because of it, and a spec is the
+     one document type that most wants a serif. */
+  --vp-font-family-base: var(--sans);
+  --vp-font-family-mono: var(--mono);
+
+  --vp-code-font-size: 0.86em;
+  --vp-code-line-height: 1.65;
+
+  --vp-layout-max-width: 1420px;
+  --vp-nav-height: 62px;
+
+  --vp-button-brand-border: transparent;
+  --vp-button-brand-text: var(--panel);
+  --vp-button-brand-bg: var(--accent);
+  --vp-button-brand-hover-border: transparent;
+  --vp-button-brand-hover-text: var(--panel);
+  --vp-button-brand-hover-bg: var(--vp-c-brand-2);
+  --vp-button-brand-active-bg: var(--vp-c-brand-3);
+
+  --vp-button-alt-border: var(--rule);
+  --vp-button-alt-text: var(--ink);
+  --vp-button-alt-bg: transparent;
+  --vp-button-alt-hover-border: var(--accent);
+  --vp-button-alt-hover-text: var(--accent);
+  --vp-button-alt-hover-bg: var(--accent-soft);
+
+  --vp-custom-block-info-bg: var(--panel-sunk);
+  --vp-custom-block-tip-bg: var(--accent-soft);
+
+  --vp-code-block-bg: var(--panel-sunk);
+  --vp-code-copy-code-bg: var(--panel);
+  --vp-code-copy-code-hover-bg: var(--panel-sunk);
+
+  --vp-local-search-bg: var(--panel);
+  --vp-local-search-result-bg: var(--panel);
+  --vp-local-search-highlight-bg: var(--accent);
+  --vp-local-search-highlight-text: var(--panel);
+
+  --vp-sidebar-bg-color: var(--bg);
+
+  /* Opaque, always. The default leaves the home page's nav transparent until
+     the first scroll, which puts prose underneath the links. */
+  --vp-nav-bg-color: var(--bg);
+  --vp-nav-screen-bg-color: var(--bg);
+
+  /* The wordmark is flat ink with a terracotta stop (§07). The default paints
+     it in the brand colour, which reads as a second accent competing with the
+     stop for the same job. */
+  --vp-home-hero-name-color: var(--ink);
+}
+
+.dark {
+  --vp-button-brand-text: #08131c;
+  --vp-button-brand-hover-text: #08131c;
+}
+
+/* ---------- chrome ---------- */
+
+/* The terracotta full stop in the wordmark. §07: the identity is the lowercase
+   wordmark, no pin icon — the stop is the whole mark. */
+.pp-stop {
+  color: var(--leaf);
+}
+
+.VPNavBarTitle .title {
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 17px;
+  letter-spacing: -0.005em;
+  border-bottom: none !important;
+}
+
+/* Nav links, sidebar entries and outline headings are chrome, not prose. They
+   take the mono face and the small-caps treatment the app uses for labels, so
+   the reading column is the only serif on screen and reads as the document. */
+.VPNavBarMenuLink,
+.VPNavBarMenuGroup .VPFlyout .text,
+.VPMenuLink .link,
+.VPNavScreenMenuLink,
+.VPNavScreenMenuGroupLink .link,
+.VPNavScreenMenuGroupSectionTitle {
+  font-family: var(--mono) !important;
+  font-size: 12.5px !important;
+  letter-spacing: 0.04em;
+}
+
+.VPSidebarItem .text {
+  font-family: var(--mono);
+  font-size: 12.5px;
+  letter-spacing: 0.01em;
+}
+
+.VPSidebarItem.level-0 > .item > .text {
+  font-size: 10.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.VPDocOutlineItem a,
+.outline-title {
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.01em;
+}
+
+.outline-title {
+  font-size: 10.5px !important;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent) !important;
+}
+
+.VPFooter .message,
+.VPFooter .copyright {
+  font-family: var(--mono);
+  font-size: 11.5px;
+  color: var(--faint);
+}
+
+/* ---------- the reading column ---------- */
+
+.vp-doc {
+  font-size: 16.5px;
+  line-height: 1.68;
+}
+
+.vp-doc h1,
+.vp-doc h2,
+.vp-doc h3,
+.vp-doc h4 {
+  letter-spacing: -0.012em;
+}
+
+.vp-doc h1 {
+  font-size: clamp(30px, 5vw, 40px);
+  font-weight: 600;
+}
+
+/* The spec's section rule (`## 03 · The grid`) is the strongest structural
+   signal in the document. Give it a real rule and real air. */
+.vp-doc h2 {
+  margin-top: 56px;
+  padding-top: 26px;
+  border-top: 1px solid var(--rule);
+  font-size: 25px;
+  font-weight: 600;
+}
+
+.vp-doc h3 {
+  margin-top: 34px;
+  font-size: 18.5px;
+  font-weight: 600;
+  color: var(--ink-soft);
+}
+
+.vp-doc a {
+  font-weight: inherit;
+  text-underline-offset: 3px;
+}
+
+.vp-doc code {
+  font-family: var(--mono);
+  background: var(--panel-sunk);
+  color: var(--ink);
+  border-radius: 5px;
+}
+
+.vp-doc div[class*='language-'] {
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  background: var(--panel-sunk);
+}
+
+/* Tables carry most of the spec's normative content — the alphabet rationale,
+   the precision tiers, the freeze status. They deserve to be readable rather
+   than merely present. */
+.vp-doc table {
+  display: table;
+  width: 100%;
+  font-size: 14.5px;
+  border-collapse: collapse;
+}
+
+.vp-doc tr {
+  border-top: 1px solid var(--rule-soft);
+}
+
+/* Zebra striping kept, quietly. The spec's tables are dense and normative —
+   the alphabet rationale, the precision tiers, the freeze status — and a row
+   band is the cheapest way to stop an eye sliding between them. */
+.vp-doc tr:nth-child(2n) {
+  background: var(--rule-soft);
+}
+
+.vp-doc th {
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--rule);
+  padding: 10px 14px 10px 0;
+  text-align: left;
+}
+
+.vp-doc td {
+  border: none;
+  padding: 11px 14px 11px 0;
+  vertical-align: top;
+}
+
+/* Blockquotes in SPEC.md are never asides — every one of them is a normative
+   rule or a stated caution. Marked in leaf terracotta so they read as the
+   load-bearing sentences they are. */
+.vp-doc blockquote {
+  margin: 26px 0;
+  padding: 4px 0 4px 20px;
+  border-left: 2px solid var(--leaf);
+  color: var(--ink);
+}
+
+.vp-doc blockquote > p {
+  font-size: 15.5px;
+  color: var(--ink-soft);
+}
+
+.vp-doc blockquote > p:first-child strong {
+  color: var(--leaf);
+}
+
+.vp-doc hr {
+  border-top: 1px solid var(--rule-soft);
+  margin: 42px 0;
+}
+
+/* A code inside running prose keeps its face and its tiers. Recognising a code
+   as a code, everywhere, is the whole point of giving it one — and the markdown
+   rule in config.ts makes sure only actual codes get here. */
+.vp-doc code.pp-inline-code {
+  font-family: var(--code-font);
+  font-size: 1.02em;
+  letter-spacing: 0.04em;
+  background: transparent;
+  padding: 0;
+  white-space: pre;
+}
+
+.vp-doc code.pp-inline-code .local {
+  color: var(--code-local);
+}
+.vp-doc code.pp-inline-code .area {
+  color: var(--code-area);
+}
+.vp-doc code.pp-inline-code .region {
+  color: var(--code-region);
+}
+.vp-doc code.pp-inline-code .sep {
+  color: var(--code-sep);
+}
+
+.vp-doc h1 > code,
+.vp-doc h2 > code,
+.vp-doc h3 > code {
+  font-size: 0.82em;
+}
+
+/* ---------- edit link ---------- */
+
+/* Not "edit this page" — nobody edits this page. It says where the text
+   actually lives, which is a different and more useful claim. */
+.VPDocFooter .edit-link-button {
+  font-family: var(--mono);
+  font-size: 12px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

@@ -1,0 +1,99 @@
+/**
+ * Harbour — the placepin.org palette, unchanged.
+ *
+ * Kept in sync with `placepin-web/src/lib/ui/tokens.css`. Two deliberate
+ * differences, both forced by the host:
+ *
+ *  1. Dark mode hangs off VitePress's `.dark` class rather than
+ *     `prefers-color-scheme`, because the site has a theme switch and the
+ *     switch has to win. The values themselves are identical.
+ *  2. No `html, body` reset — VitePress owns document scroll, and
+ *     `overscroll-behavior: none` on a long specification is hostile.
+ *  3. The code-size tokens follow CodeField.svelte rather than the app's
+ *     token file, which still carries the two-size pair an older component
+ *     used. See the note beside them.
+ *
+ * The three protocol tiers are load-bearing, not decorative: vermilion is
+ * always the ≈5 m leaf, teal always the ≈840 m area, pale slate always the
+ * ≈137 km region — the same three on the map, in the lattice, and here.
+ */
+
+:root {
+  --bg: #f2f5f7;
+  --panel: #ffffff;
+  --panel-sunk: #e9eef2;
+  --ink: #16232e;
+  --ink-soft: #5c7086;
+  --faint: #93a5b4;
+  --rule: #dbe3e9;
+  --rule-soft: #eaeff3;
+  --accent: #1f6f7d;
+  --accent-soft: #e2eff1;
+
+  --leaf: #e2523c;
+  --area: #2f7d8c;
+  --region: #9db8c4;
+  --sage: #5f9e8f;
+
+  --me: #3b82f6;
+  --me-ring: #ffffff;
+
+  --shadow-sm: 0 2px 8px rgba(22, 35, 46, 0.12);
+  --shadow-lg: 0 -4px 24px rgba(22, 35, 46, 0.14);
+
+  --mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  --serif: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
+  --sans: var(--serif);
+
+  /* Share Tech Mono, a single weight (400). Every block of a code is the same
+     size — the app settled that in CodeField.svelte, and hierarchy is carried
+     by colour alone. There is no bold in this face to reach for anyway.
+
+     `--code-size` is `.code-metrics` from CodeField verbatim. The app's older
+     `--code-size-hero` / `--code-size-rest` pair is deliberately not mirrored:
+     it belongs to CodeDisplay.svelte, which this site has no equivalent of. */
+  --code-font: "Share Tech Mono", var(--mono);
+  --code-size: clamp(21px, 5.2vw, 26px);
+  --code-size-compact: 15px;
+
+  /* Text colours for the code, separate from the map fills above: fills can
+     afford to be pale, text cannot. Someone reading a code aloud needs all
+     nine characters. */
+  --code-local: #d64828;
+  --code-area: #1f6f7d;
+  --code-region: #7d97a8;
+  --code-sep: #b8c6d0;
+
+  --radius: 10px;
+  --radius-lg: 16px;
+  --tap: 44px;
+}
+
+.dark {
+  --bg: #0d1620;
+  --panel: #16212e;
+  --panel-sunk: #101b26;
+  --ink: #e8eff5;
+  --ink-soft: #93a8ba;
+  --faint: #6b8093;
+  --rule: #263647;
+  --rule-soft: #1b2733;
+  --accent: #4fa8b8;
+  --accent-soft: #162b33;
+
+  --leaf: #ff7a5c;
+  --area: #4fa8b8;
+  --region: #6d8fa3;
+  --sage: #6fb3a2;
+
+  --me: #5b9cff;
+  --me-ring: #e8eff5;
+
+  --code-local: #ff8a6b;
+  --code-area: #6fc4d3;
+  --code-region: #8ba6ba;
+  --code-sep: #46586b;
+
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.45);
+  --shadow-lg: 0 -4px 24px rgba(0, 0, 0, 0.55);
+}

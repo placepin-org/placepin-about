@@ -1,0 +1,17 @@
+# Cloudflare Pages. Copied into the build root verbatim from docs/public/.
+#
+# Unlike placepin.org this site has no service worker and no SPA fallback —
+# VitePress emits a real HTML file per page — so the only thing that needs
+# stating is what may be cached and for how long.
+
+# Hashed filenames. Safe to trust forever.
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# The specification is a living draft (§10). A stale copy of it in someone's
+# cache is a copy that says the wrong thing about what a code means, so the
+# HTML always revalidates.
+/*
+  Cache-Control: public, max-age=0, must-revalidate
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
