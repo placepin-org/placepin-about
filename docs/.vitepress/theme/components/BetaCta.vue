@@ -16,7 +16,7 @@ import { APP, BETA_FORM } from '../links.js';
     <h2>Help freeze the protocol</h2>
     <p class="body">
       The specification is a draft, and the questions still open are the human
-      ones — whether <code>Y</code> survives transcription testing, whether the
+      ones: whether <code>Y</code> survives transcription testing, whether the
       1/7, 2/Z, 5/S, 8/B and M/N pairs hold up when a code is spoken or
       handwritten, and whether writing the spot first is genuinely easier to
       use. Those get answered by people trying it, not by more argument in the
@@ -30,7 +30,7 @@ import { APP, BETA_FORM } from '../links.js';
     </p>
     <p class="fine">
       Codes are not durable yet. Anything saved during the beta may change
-      meaning if the alphabet does — §10.
+      meaning if the alphabet does (§10).
     </p>
   </aside>
 </template>

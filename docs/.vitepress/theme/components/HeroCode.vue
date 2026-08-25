@@ -16,7 +16,7 @@ const TIERS = [
     block: 'PYY',
     label: 'local',
     size: '≈5 m',
-    note: 'the spot — the part a person is actually told',
+    note: 'the spot, the part a person is actually told',
   },
   {
     key: 'area',

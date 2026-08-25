@@ -54,6 +54,14 @@ it must say the preview-and-confirm step out loud.
 says "saved", never "forever" — and the beta card says so explicitly. Do not
 soften that line to make the call-to-action read better.
 
+### No em dashes in site copy
+
+Authored copy on this site avoids the em dash: split the sentence, or use a
+colon, comma, semicolon or parentheses instead. Two standing exceptions: the
+synced SPEC.md renders verbatim (its dashes are the spec's own), including the
+quoted spoken form "P Y Y — Z T 7 — W M R" wherever a page cites it, and the
+bare — used as an empty-cell placeholder in tables is a glyph, not punctuation.
+
 ### Brand
 
 Lowercase **placepin**, never "PlacePin". The wordmark is `placepin.org` with a

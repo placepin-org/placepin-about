@@ -11,10 +11,10 @@
 import PinCode from './PinCode.vue';
 
 const RUNGS = [
-  { code: 'PYY-ZT7-WMR', size: '≈5 m', note: 'the leaf cell — full precision', ok: true },
+  { code: 'PYY-ZT7-WMR', size: '≈5 m', note: 'the leaf cell, full precision', ok: true },
   { code: 'ZT7-WMR', size: '≈840 m', note: 'the area that leaf sits inside', ok: true },
   { code: 'WMR', size: '≈137 km', note: 'the region containing both', ok: true },
-  { code: 'PYY', size: '—', note: 'not an address — a search input (§01)', ok: false },
+  { code: 'PYY', size: '—', note: 'not an address but a search input (§01)', ok: false },
 ] as const;
 </script>
 

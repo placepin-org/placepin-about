@@ -17,7 +17,7 @@ const REPOS = [
     key: 'spec',
     name: 'placepin-spec',
     href: REPO_SPEC,
-    what: 'The specification and the conformance fixtures. Normative — this is the one that decides what a code means.',
+    what: 'The specification and the conformance fixtures. Normative: this is the one that decides what a code means.',
     meta: 'SPEC.md · vectors.json · CC BY 4.0 / Apache-2.0',
   },
   {

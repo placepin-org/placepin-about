@@ -127,10 +127,10 @@ export default defineConfig({
       {
         text: 'Source',
         items: [
-          { text: 'placepin-spec — the protocol', link: REPO_SPEC },
-          { text: 'placepin-js — @placepin/core-js', link: REPO_JS },
-          { text: 'placepin-about — this site', link: REPO_ABOUT },
-          { text: 'vectors.json — conformance fixtures', link: VECTORS },
+          { text: 'placepin-spec · the protocol', link: REPO_SPEC },
+          { text: 'placepin-js · @placepin/core-js', link: REPO_JS },
+          { text: 'placepin-about · this site', link: REPO_ABOUT },
+          { text: 'vectors.json · conformance fixtures', link: VECTORS },
         ],
       },
       { text: 'Join the beta', link: BETA_FORM },
@@ -187,6 +187,7 @@ export default defineConfig({
             { text: 'Every version is a 0.x', link: '/next#every-version-is-a-0-x-on-purpose' },
             { text: 'What the beta tests', link: '/next#what-the-beta-is-actually-testing' },
             { text: 'Non-Latin codes', link: '/next#non-latin-codes' },
+            { text: 'Other languages', link: '/next#implementations-in-other-languages' },
             { text: 'An open-source organisation', link: '/next#an-open-source-organisation' },
             { text: 'Contact', link: '/next#contact' },
           ],
@@ -237,7 +238,7 @@ export default defineConfig({
     footer: {
       message: [
         'Specification text CC BY 4.0 · reference code Apache-2.0.',
-        'v5 is a draft — no code emitted before v5-final is durable.',
+        'v5 is a draft: no code emitted before v5-final is durable.',
         `<a href="${REPO_SPEC}">placepin-spec</a> ·`,
         `<a href="${REPO_JS}">placepin-js</a> ·`,
         `<a href="mailto:${EMAIL}">${EMAIL}</a>`,

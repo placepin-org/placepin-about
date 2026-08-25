@@ -43,7 +43,7 @@ function locateSpec() {
   }
 
   console.error(
-    `\n  Cannot find SPEC.md — neither a sibling checkout at\n` +
+    `\n  Cannot find SPEC.md: neither a sibling checkout at\n` +
       `  ${SPEC_REPO}\n` +
       `  nor an installed @placepin/vectors package.\n\n` +
       `  Run "npm install", or clone the spec next to this repo:\n\n` +
@@ -71,7 +71,7 @@ const frontmatter = [
   '---',
   '',
   '<!--',
-  '  GENERATED FILE — do not edit.',
+  '  GENERATED FILE. Do not edit.',
   '  Synced verbatim from placepin-spec/SPEC.md by scripts/sync-spec.mjs.',
   '  Change the spec in that repo; this is only the rendering of it.',
   '-->',
@@ -83,7 +83,7 @@ const frontmatter = [
   'This page is [`SPEC.md`](https://github.com/placepin-org/placepin-spec/blob/main/SPEC.md)',
   'from `placepin-spec`, rendered verbatim. Conformance is defined by the',
   '[conformance vectors](https://github.com/placepin-org/placepin-spec/blob/main/vectors.json),',
-  'not by this prose — see §03. Proposals belong in that repo.',
+  'not by this prose (see §03). Proposals belong in that repo.',
   ':::',
   '',
 ].join('\n');

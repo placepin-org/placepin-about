@@ -22,25 +22,37 @@
 }
 
 /* The wordmark. Flat, not the default gradient — §07: the identity is the
-   lowercase wordmark and its full stop, and a gradient is a second idea. */
-.VPHero .name {
+   lowercase wordmark and its full stop, and a gradient is a second idea.
+
+   The name and the clip are ONE element (class="name clip"), and the default
+   theme paints it through -webkit-text-fill-color for its gradient trick.
+   text-fill-color beats `color`, so the terracotta stop inside the wordmark
+   never shows unless the fill is put back to currentColor — a plain `color`
+   override on .pp-stop silently loses. */
+.VPHero .name.clip {
   font-family: var(--sans);
   font-size: clamp(40px, 7vw, 58px);
   font-weight: 600;
   line-height: 1.06;
   letter-spacing: -0.022em;
-}
-
-.VPHero .name .clip {
   background: none;
   -webkit-background-clip: initial;
   background-clip: initial;
-  -webkit-text-fill-color: initial;
   color: var(--ink);
+  -webkit-text-fill-color: currentColor;
 }
 
-.VPHero .text {
-  margin-top: 10px;
+.VPHero .name .pp-stop {
+  color: var(--leaf);
+}
+
+/* Clear air between the wordmark and the claim under it. At 58px the default
+   gap reads as one crowded lockup rather than a name and a line. The long
+   selector is the scoped-style tie-breaker again: the theme's own
+   `.VPHero.has-image .text[data-v-…] { margin: 0 }` weighs four classes and
+   loads after this sheet, so anything lighter silently loses. */
+.VPHome .VPHero .container .main .text {
+  margin-top: 22px;
   font-size: clamp(20px, 3.2vw, 27px);
   font-weight: 400;
   line-height: 1.3;
