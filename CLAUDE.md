@@ -16,7 +16,7 @@ The protocol itself is in `../placepin-spec/SPEC.md`. The app is
 Editing it does nothing durable — the next build overwrites it.
 
 A hand-maintained second copy of a normative document is worse than no copy.
-§10 requires that any change to what a code means be *visibly* a version
+§10 requires that any change to what a code means be _visibly_ a version
 change; a doc site quietly diverging from the spec is the invisible kind, and
 there is no checksum anywhere in this protocol to catch the consequence.
 
@@ -89,7 +89,7 @@ and keep the open questions marked **TODO** with who decides.
 The non-Latin design is a **1:1 character mapping** onto the existing thirty,
 which is what makes it safe to ship alongside a freeze: the grid is untouched,
 a script code is the same address rather than a related one, and conformance
-stays one vector suite. What is *not* decided is every mapping table, and that
+stays one vector suite. What is _not_ decided is every mapping table, and that
 is deliberate — §02's "cannot spell a word" property does not automatically
 survive being carried into another script, and only readers of that script can
 say which of its characters are confusable. Do not fill those tables in.
@@ -145,7 +145,7 @@ miss. **Write authored prose unwrapped, one paragraph per line.**
 it starts with a digit, and the `·` survives. `#_03-the-grid` looks right and
 silently scrolls nowhere.
 
-VitePress's dead-link check validates the *page*, not the anchor, so this
+VitePress's dead-link check validates the _page_, not the anchor, so this
 failure is invisible to it. `sync-spec.mjs` re-slugifies the real headings and
 fails the build on a broken deep link. If that check ever starts producing
 false positives, fix the slug rule to match `@mdit-vue/shared` — do not delete
@@ -174,12 +174,12 @@ import from it.
 
 Three places cannot, and are listed here rather than left to be found:
 
-| Place | Why |
-|---|---|
-| `docs/index.md` frontmatter | Markdown frontmatter is YAML; it cannot import |
-| `docs/next.md` — the inline "Join the beta →" link | Same |
-| `docs/public/_redirects` | Cloudflare config, read by the CDN, not the build |
-| `scripts/sync-spec.mjs` | Plain Node — it cannot import a `.ts` module, and adding a loader to save one string is the wrong trade |
+| Place                                              | Why                                                                                                     |
+| -------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
+| `docs/index.md` frontmatter                        | Markdown frontmatter is YAML; it cannot import                                                          |
+| `docs/next.md` — the inline "Join the beta →" link | Same                                                                                                    |
+| `docs/public/_redirects`                           | Cloudflare config, read by the CDN, not the build                                                       |
+| `scripts/sync-spec.mjs`                            | Plain Node — it cannot import a `.ts` module, and adding a loader to save one string is the wrong trade |
 
 Keep `BETA_FORM` equal to `placepin-web`'s `src/lib/app/AppShell.svelte`, which
 links back here in return.
@@ -216,19 +216,18 @@ IBM Plex Mono.
 
 This exists because a CSS rule cannot tell `PYY-ZT7-WMR` from `placepin-spec`,
 and the earlier one painted repo names, `decode()` and `FACTOR` in the address
-face. Share Tech Mono means *this is an address*; spending it on everything in
+face. Share Tech Mono means _this is an address_; spending it on everything in
 backticks spends the signal.
 
 **Bare three-character strings are deliberately excluded.** A lone block is the
 most argued-over input in the specification — normatively it decodes as a
-region (§01), but the prose around it is almost always discussing it *as a
-local block* to explain why that is not an address. Colouring it pale slate
+region (§01), but the prose around it is almost always discussing it _as a
+local block_ to explain why that is not an address. Colouring it pale slate
 while the sentence calls it local contradicts the sentence on screen. Authored
 pages use `<PinCode>` where a tier is actually meant.
 
 ## Conventions
 
-- Commit email `hi@princeraju.com`, set per-repo.
 - Seven nav items plus the sidebar offset overflow the bar at 1280px and push
   the theme toggle and GitHub link off-screen. There is no "Overview" entry
   because the wordmark is the link home. Adding an item means measuring first.
