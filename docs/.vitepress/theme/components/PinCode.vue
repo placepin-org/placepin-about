@@ -2,17 +2,17 @@
 /**
  * A code, rendered the way the app renders it.
  *
- * The reference is `placepin-web/src/lib/panel/CodeField.svelte` — the one
- * editable field, which is the code display a visitor actually recognises —
- * not the older `CodeDisplay.svelte`. That distinction matters, because the
+ * The reference is `placepin-web/src/lib/panel/CodeField.svelte`, the one
+ * editable field and the code display a visitor actually recognises, not the
+ * older `CodeDisplay.svelte`. That distinction matters, because the
  * two disagree and the field is the one that won:
  *
  *   All three blocks are the same size. The hierarchy is carried by colour
- *   alone — a code with one enormous block in it reads as a broken text field
+ *   alone. A code with one enormous block in it reads as a broken text field
  *   rather than a headline.
  *
  * So: one size, one weight, three colours. Share Tech Mono ships a single
- * weight (400), which is why colour has to carry it — there is no bold to
+ * weight (400), which is why colour has to carry it: there is no bold to
  * reach for even if reaching were right.
  *
  * Metrics below are `.code-metrics` from CodeField, character for character.
@@ -36,7 +36,7 @@ const blocks = computed(
 /**
  * Blocks are written finest-first and the last is always the region, so a
  * short code is the coarse tail: two blocks are [area, region], one is
- * [region]. Never the other way round — §01 is normative about it.
+ * [region]. Never the other way round; §01 is normative about it.
  */
 const TIERS = ['local', 'area', 'region'] as const;
 const tierOf = (i: number) => TIERS[i + (3 - blocks.value.length)] ?? 'region';
@@ -52,7 +52,7 @@ const tierOf = (i: number) => TIERS[i + (3 - blocks.value.length)] ?? 'region';
 </template>
 
 <style scoped>
-/* CodeField.svelte, `.code-metrics` — one declaration governed both its layers
+/* CodeField.svelte, `.code-metrics`. One declaration governed both its layers
    there so they could not drift; the same set governs every code here so this
    site and the app cannot drift either. */
 .pp-code {

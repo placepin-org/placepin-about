@@ -3,7 +3,7 @@
  *
  * VitePress's home layout, restyled rather than replaced: the hero grid, the
  * feature cards and the responsive breakpoints are all fine engineering that
- * would only be re-derived worse by hand. What changes is everything visual —
+ * would only be re-derived worse by hand. What changes is everything visual:
  * the gradient-brand hero name becomes a flat wordmark with a terracotta stop,
  * the feature cards lose their tinted fill, and the whole thing loses the
  * centre-aligned marketing posture in favour of the app's left-aligned,
@@ -21,13 +21,13 @@
   align-items: center;
 }
 
-/* The wordmark. Flat, not the default gradient — §07: the identity is the
+/* The wordmark. Flat, not the default gradient. §07: the identity is the
    lowercase wordmark and its full stop, and a gradient is a second idea.
 
    The name and the clip are ONE element (class="name clip"), and the default
    theme paints it through -webkit-text-fill-color for its gradient trick.
    text-fill-color beats `color`, so the terracotta stop inside the wordmark
-   never shows unless the fill is put back to currentColor — a plain `color`
+   never shows unless the fill is put back to currentColor; a plain `color`
    override on .pp-stop silently loses. */
 .VPHero .name.clip {
   font-family: var(--sans);
@@ -86,7 +86,7 @@
 
 /* The default frames a floating illustration inside a fixed 320px square, with
    a blurred blob behind it. The hero object here is a card with its own edge
-   and its own height — the fixed square makes it overflow onto whatever sits
+   and its own height, and the fixed square makes it overflow onto whatever sits
    below, which on a phone is the action buttons. Both axes have to give. */
 .VPHero .image {
   order: 2;
@@ -110,15 +110,12 @@
 }
 
 /* Left-aligned on a phone too. The default centres the hero below 960px, which
-   is the marketing posture this design is deliberately not taking — and a
-   centred rag on a 40-character line is harder to read besides. */
-/* Left-aligned on a phone too. The default centres the hero below 960px, which
-   is the marketing posture this design is deliberately not taking — and a
+   is the marketing posture this design is deliberately not taking, and a
    centred rag on a 40-character line is harder to read besides.
 
    The selectors are longer than they look like they need to be. VitePress
    compiles component CSS as Vue scoped styles, which carry a `[data-v-…]`
-   attribute and are injected into <head> at component-load time — always after
+   attribute and are injected into <head> at component-load time, always after
    a plain stylesheet import. So an equal-specificity rule here loses the tie
    every time, and `!important` would only move the problem. Out-specifying it
    by one class is the quiet fix. */
@@ -196,7 +193,7 @@
   color: var(--ink-soft);
 }
 
-/* No icons. There is no icon language here to draw from — §07 is explicit
+/* No icons. There is no icon language here to draw from. §07 is explicit
    that the identity is the wordmark and the 3-3-3 structure, and borrowed
    dingbats would be a fifth visual idea on a page that already has four.
    Each card gets a tier rule instead: the same 14x3 mark the hero legend and

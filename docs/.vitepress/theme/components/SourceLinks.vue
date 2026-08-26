@@ -5,8 +5,8 @@
  * Three artifacts and a fixtures file is more than a reader will retain from
  * prose, and the split between them is the point: the protocol, an
  * implementation of it, and the fixtures that decide whether the second one
- * got the first one right. §03 makes that third thing normative — conformance
- * is the vectors, not the prose — so it is listed as a peer, not a footnote,
+ * got the first one right. §03 makes that third thing normative (conformance
+ * is the vectors, not the prose), so it is listed as a peer, not a footnote,
  * and it links to the file in `placepin-spec` rather than to any copy this
  * site might serve.
  */

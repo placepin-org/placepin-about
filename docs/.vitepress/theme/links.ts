@@ -3,7 +3,7 @@
  *
  * Shared between `config.ts` and the components so the nav, the footer and the
  * cards cannot disagree. Two places still hold literals and cannot import
- * from here — markdown frontmatter, and `docs/public/_redirects` — so they are
+ * from here (markdown frontmatter, and `docs/public/_redirects`), so they are
  * named in CLAUDE.md rather than left to be discovered.
  *
  * `VECTORS` points into `placepin-spec` deliberately. §03 makes the fixtures

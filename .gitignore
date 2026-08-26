@@ -3,5 +3,5 @@ docs/.vitepress/dist/
 docs/.vitepress/cache/
 .DS_Store
 
-# Synced from ../placepin-spec at build time — never edit in place.
+# Synced from ../placepin-spec at build time. Never edit in place.
 docs/spec/spec.md

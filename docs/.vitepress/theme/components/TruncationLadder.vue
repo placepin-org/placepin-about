@@ -3,7 +3,7 @@
  * The one thing implementers get wrong, shown rather than asserted.
  *
  * §01 is normative: a bare three-character string is a region, never a local
- * block. The failure mode if that is missed is silent — the code still decodes,
+ * block. The failure mode if that is missed is silent: the code still decodes,
  * to somewhere else entirely, and §06 ships no checksum to catch it. So the
  * invalid rung is on the ladder deliberately: leaving it off would let a reader
  * infer the symmetric rule that does not exist.
@@ -14,7 +14,7 @@ const RUNGS = [
   { code: 'PYY-ZT7-WMR', size: '≈5 m', note: 'the leaf cell, full precision', ok: true },
   { code: 'ZT7-WMR', size: '≈840 m', note: 'the area that leaf sits inside', ok: true },
   { code: 'WMR', size: '≈137 km', note: 'the region containing both', ok: true },
-  { code: 'PYY', size: '—', note: 'not an address but a search input (§01)', ok: false },
+  { code: 'PYY', size: 'none', note: 'not an address but a search input (§01)', ok: false },
 ] as const;
 </script>
 

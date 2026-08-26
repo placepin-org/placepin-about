@@ -1,5 +1,5 @@
 {
-  // Static assets only — VitePress emits a real HTML file per page, so unlike
+  // Static assets only. VitePress emits a real HTML file per page, so unlike
   // placepin.org there is no SPA fallback here: an unknown path is a genuine
   // 404, and the built 404.html is the right answer for it.
   "$schema": "node_modules/wrangler/config-schema.json",

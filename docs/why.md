@@ -6,15 +6,15 @@ outline: [2, 3]
 
 # Why another protocol
 
-There are already open location codes, and one of them ships inside Google Maps. Adding another needs a better reason than enthusiasm, so here is the argument in full, including the parts that do not favour placepin.
+There are already open location codes, and one of them ships inside Google Maps. Adding another needs a better reason than enthusiasm, so here is the argument, including the parts that do not favour placepin.
 
 ## The problem: a place with no address
 
-Street addressing is not universal, and where it exists it is often not precise enough to be useful. A gate is not a building. A trailhead is not a road. A stall is not a market. A delivery entrance around the back is not the number on the front. Hundreds of millions of people live somewhere a courier cannot find from an address alone, and everybody else has regularly had to say *"meet me at the corner past the second gate"* to somebody standing two hundred metres away.
+Street addressing is not universal, and where it exists it is often not precise enough to be useful. A gate is not a building. A trailhead is not a road. A delivery entrance around the back is not the number on the front. Hundreds of millions of people live somewhere a courier cannot find from an address alone, and everybody else has had to say *"meet me at the corner past the second gate"* to somebody standing two hundred metres away.
 
 Coordinates solve the precision problem completely and the human problem not at all. `51.507387, -0.127806` is exact, unambiguous, universally decodable, and nobody has ever read one down a phone line without repeating it.
 
-So the requirement is narrow and awkward: something as precise as a coordinate that a person can **say**, **hear**, **write down**, and **type on a phone keyboard** without a mistake going unnoticed.
+So the requirement is narrow and awkward: something as precise as a coordinate that a person can **say**, **hear**, **write down**, and **type on a phone keyboard**.
 
 ## What already exists
 
@@ -39,7 +39,7 @@ Where placepin differs is the **spoken form**. At comparable precision a Plus Co
 
 ### what3words
 
-The most memorable of all of them: three ordinary words genuinely beat nine characters for recall, and it would be dishonest to claim otherwise. The costs are structural rather than cosmetic:
+The most memorable of all of them: three ordinary words genuinely beat nine characters for recall. The costs are structural rather than cosmetic:
 
 - **It is proprietary.** The word lists and the algorithm are owned. Decoding requires permission, which makes it a dependency rather than a protocol.
 - **There is no hierarchy.** Three words name a square and nothing else; there is no coarser form, no containment, nothing to shorten.
@@ -58,7 +58,7 @@ Four things, and no more than four:
 - **A local-first write order**, so the block a person is actually told comes first. That is what makes proximity-aware input possible: a search box can accept the part somebody knows and use a rough sense of where they are to find the rest.
 - **Near-equal-area cells**, from a recursive latitude-adaptive partition rather than a projection that stretches toward the poles.
 
-And underneath all four, the thing that is not a feature so much as a precondition: **a code is arithmetic**. There is no lookup table, no index, and no service. `decode()` is about three kilobytes and works on a phone with no signal, which is exactly the situation in which somebody most needs to say where they are.
+Underneath all four is the precondition: **a code is arithmetic**. There is no lookup table, no index, and no service. `decode()` is about three kilobytes and works on a phone with no signal, which is exactly when somebody most needs to say where they are.
 
 ## The honest costs
 

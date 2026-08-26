@@ -2,7 +2,7 @@
 /**
  * The road to the freeze, as a track rather than a table.
  *
- * The ordering is the content here — 1.0 is not "the next release", it is the
+ * The ordering is the content here. 1.0 is not "the next release", it is the
  * point after which the meaning of a code can never change again, and that is
  * only legible if you can see what has to happen first. The three tier colours
  * carry it: leaf for where we are, area for the work in flight, region for the
@@ -51,7 +51,7 @@ li {
   padding-bottom: 26px;
 }
 
-/* The connecting rule, drawn behind the markers. Stops at the last stage —
+/* The connecting rule, drawn behind the markers. Stops at the last stage:
    there is nothing after the freeze, which is the point of a freeze. */
 li:not(:last-child)::before {
   content: '';

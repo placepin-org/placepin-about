@@ -2,7 +2,7 @@
   "name": "@placepin/about",
   "version": "0.1.0",
   "private": true,
-  "description": "about.placepin.org — what the protocol is, and the specification in full.",
+  "description": "about.placepin.org: what the protocol is, and the specification in full.",
   "type": "module",
   "scripts": {
     "sync": "node scripts/sync-spec.mjs",

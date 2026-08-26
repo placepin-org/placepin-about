@@ -1,7 +1,7 @@
 # Cloudflare Pages. Copied into the build root verbatim from docs/public/.
 #
-# Unlike placepin.org this site has no service worker and no SPA fallback —
-# VitePress emits a real HTML file per page — so the only thing that needs
+# Unlike placepin.org this site has no service worker and no SPA fallback,
+# since VitePress emits a real HTML file per page, so the only thing that needs
 # stating is what may be cached and for how long.
 
 # Hashed filenames. Safe to trust forever.

@@ -2,8 +2,8 @@
 /**
  * The hero object: one code, and what each of its three blocks claims.
  *
- * This is the README's ASCII diagram drawn properly — and it is the single
- * most important thing to get in front of someone in the first five seconds,
+ * This is the README's ASCII diagram drawn properly, and the single most
+ * important thing to get in front of someone in the first five seconds,
  * because the reading order is the one thing about v5 that surprises everyone.
  * The blocks run finest-to-coarsest, left to right, which is backwards from
  * every prefix-truncating system a reader has met before.
@@ -63,7 +63,7 @@ const TIERS = [
 .hero-code {
   margin: 0;
   text-align: left;
-  /* The one place the code is scaled past the field's own ceiling — a landing
+  /* The one place the code is scaled past the field's own ceiling: a landing
      hero sitting beside a 58px wordmark needs the presence. Uniform across all
      three blocks, same face, same letter-spacing: it is the field's code, set
      larger, not a different treatment. */

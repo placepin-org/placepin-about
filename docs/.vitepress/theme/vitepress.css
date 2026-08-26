@@ -2,7 +2,7 @@
  * The bridge: VitePress's `--vp-*` variables, re-pointed at placepin tokens.
  *
  * Nothing here invents a colour. Every value resolves to something in
- * `tokens.css`, so the two sites cannot drift — editing the palette in
+ * `tokens.css`, so the two sites cannot drift: editing the palette in
  * placepin-web and copying it across is enough, and no rule in this file needs
  * revisiting.
  *
@@ -127,7 +127,7 @@
 /* ---------- chrome ---------- */
 
 /* The terracotta full stop in the wordmark. §07: the identity is the lowercase
-   wordmark, no pin icon — the stop is the whole mark. */
+   wordmark, no pin icon; the stop is the whole mark. */
 .pp-stop {
   color: var(--leaf);
 }
@@ -242,9 +242,8 @@
   background: var(--panel-sunk);
 }
 
-/* Tables carry most of the spec's normative content — the alphabet rationale,
-   the precision tiers, the freeze status. They deserve to be readable rather
-   than merely present. */
+/* Tables carry most of the spec's normative content. They deserve to be
+   readable rather than merely present. */
 .vp-doc table {
   display: table;
   width: 100%;
@@ -256,9 +255,8 @@
   border-top: 1px solid var(--rule-soft);
 }
 
-/* Zebra striping kept, quietly. The spec's tables are dense and normative —
-   the alphabet rationale, the precision tiers, the freeze status — and a row
-   band is the cheapest way to stop an eye sliding between them. */
+/* Zebra striping kept, quietly. The spec's tables are dense and normative, and
+   a row band is the cheapest way to stop an eye sliding between them. */
 .vp-doc tr:nth-child(2n) {
   background: var(--rule-soft);
 }
@@ -282,7 +280,7 @@
   vertical-align: top;
 }
 
-/* Blockquotes in SPEC.md are never asides — every one of them is a normative
+/* Blockquotes in SPEC.md are never asides: every one of them is a normative
    rule or a stated caution. Marked in leaf terracotta so they read as the
    load-bearing sentences they are. */
 .vp-doc blockquote {
@@ -307,7 +305,7 @@
 }
 
 /* A code inside running prose keeps its face and its tiers. Recognising a code
-   as a code, everywhere, is the whole point of giving it one — and the markdown
+   as a code, everywhere, is the whole point of giving it one, and the markdown
    rule in config.ts makes sure only actual codes get here. */
 .vp-doc code.pp-inline-code {
   font-family: var(--code-font);
@@ -339,7 +337,7 @@
 
 /* ---------- edit link ---------- */
 
-/* Not "edit this page" — nobody edits this page. It says where the text
+/* Not "edit this page": nobody edits this page. It says where the text
    actually lives, which is a different and more useful claim. */
 .VPDocFooter .edit-link-button {
   font-family: var(--mono);

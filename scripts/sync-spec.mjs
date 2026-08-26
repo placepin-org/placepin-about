@@ -3,7 +3,7 @@
  *
  * `placepin-spec/SPEC.md` is the single source of truth. This site renders it;
  * it does not own it. A second hand-maintained copy would drift, and a drifted
- * spec is worse than no spec — §10 is explicit that changing what a code means
+ * spec is worse than no spec. §10 is explicit that changing what a code means
  * requires a visible version change, and a doc site quietly diverging is
  * exactly the invisible kind.
  *
@@ -12,7 +12,7 @@
  *
  * Where the source comes from: a sibling checkout when there is one, so local
  * spec edits render here before they are pushed; otherwise the installed
- * @placepin/vectors package, which is the spec repo as a git dependency —
+ * @placepin/vectors package, which is the spec repo as a git dependency:
  * what CI uses, where only this repo gets cloned. That copy is pinned by the
  * lockfile, so a spec change reaches the site by `npm update
  * @placepin/vectors`, deliberately, not by whichever commit happened to be
@@ -32,7 +32,7 @@ function locateSpec() {
   if (existsSync(sibling)) return { path: sibling, via: 'the sibling checkout' };
 
   // The package's `exports` map doesn't expose SPEC.md directly, but it does
-  // expose package.json — resolve that and take the file from beside it.
+  // expose package.json, so resolve that and take the file from beside it.
   try {
     const req = createRequire(import.meta.url);
     const pkg = req.resolve('@placepin/vectors/package.json');
@@ -59,7 +59,7 @@ console.log(`  reading SPEC.md from ${source.via}`);
 /**
  * The spec opens with its own H1 and a subtitle line. VitePress wants
  * frontmatter for the page title and description, and its outline is built
- * from H2/H3 — both of which the document already has, so nothing is rewritten
+ * from H2/H3, both of which the document already has, so nothing is rewritten
  * beyond the header being prepended.
  */
 const frontmatter = [
@@ -105,7 +105,7 @@ console.log(`  synced SPEC.md → docs/spec/spec.md (${lines} lines)`);
  *
  * The slug rule mirrors VitePress's (`@mdit-vue/shared`'s `slugify`): lowercase,
  * strip the characters it strips, spaces to hyphens, and a leading digit gets
- * an underscore prefix — which is why the anchors read `_03-·-the-grid`.
+ * an underscore prefix, which is why the anchors read `_03-·-the-grid`.
  */
 /** Pages written here, as opposed to the one synced in. Both checks below
  *  walk this list, so a new page joins them by being added once. */
@@ -160,7 +160,7 @@ console.log(`  verified ${referenced.length} deep links into the spec`);
  * `breaks: true` makes a wrapped line a rendering bug.
  *
  * The setting exists for SPEC.md, whose line breaks are meaningful. The cost is
- * that a hard-wrapped paragraph in an authored page becomes a stack of <br>s —
+ * that a hard-wrapped paragraph in an authored page becomes a stack of <br>s,
  * which looks like a deliberate stanza and is nothing of the kind. It is an
  * easy mistake to make and an easy one to miss, because the words are all still
  * there and only the rag looks odd.

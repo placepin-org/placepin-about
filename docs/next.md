@@ -25,19 +25,19 @@ While the protocol sits below 1.0, a change that moves any conformance vector is
     version: '0.x',
     state: 'now',
     title: 'Draft: where the protocol is today',
-    body: 'The grid, apportionment, boundary ownership and normalization are all resolved and conformance-tested. The alphabet is a candidate, not a decision. Codes emitted now are not durable.',
+    body: 'The grid, apportionment, boundary ownership and normalization are resolved and conformance-tested. The alphabet is a candidate, not a decision. Codes emitted now are not durable.',
   },
   {
     version: '0.x',
     state: 'next',
     title: 'Beta and stress testing',
-    body: 'The open questions are human ones, and they are settled by people using the thing rather than by more argument in the document: speech and handwriting transcription trials, the letter Y, the confusable pairs, and whether writing the spot first is genuinely easier to use.',
+    body: 'The open questions are human ones, settled by people using the thing rather than by more argument in the document: speech and handwriting transcription trials, the letter Y, the confusable pairs, and whether writing the spot first is genuinely easier to use.',
   },
   {
     version: '0.x',
     state: 'next',
     title: 'Implementations in other languages',
-    body: 'JavaScript exists and is conformant. Python, Rust, Go, Swift, Kotlin and the rest are open, and each is a few hundred lines against a published fixture file, not a research project. Ports can start now; the vectors they test against are versioned with the spec.',
+    body: 'JavaScript exists and is conformant. Python, Rust, Go, Swift, Kotlin and the rest are open, and each is a few hundred lines against a published fixture file. Ports can start now; the vectors they test against are versioned with the spec.',
   },
   {
     version: '1.0',
@@ -49,7 +49,7 @@ While the protocol sits below 1.0, a change that moves any conformance vector is
     version: 'governance',
     state: 'next',
     title: 'An open-source organisation',
-    body: 'The repositories are one person\'s today. A protocol meant to outlive its domain name cannot stay that way, and this needs to be settled before the freeze rather than after it.',
+    body: 'The repositories are one person\'s today. A protocol meant to outlive its domain name cannot stay that way, and this needs settling before the freeze rather than after it.',
   },
 ]" />
 
@@ -62,7 +62,7 @@ Stress testing here means load in the human sense, not the server sense; there i
 | Does the letter `Y` stay? | Transcription trials. It behaves as a semi-vowel: `SKY`, `GYM`, and at least one three-letter Y-word that is a slur. Dropping it makes the alphabet 29 characters and **changes the meaning of every code that exists**. |
 | Do the confusable pairs hold up? | 1/7 in European handwriting, 2/Z, 5/S and 8/B by sight, M/N over a phone. All still in the set. |
 | Is local-first genuinely easier? | The block order is considered actively unstable until the proximity-aware input it was meant to enable has been tried for real. |
-| Does a code survive being spoken? | "P Y Y — Z T 7 — W M R", read down a phone line by someone who has never seen the format. |
+| Does a code survive being spoken? | "P Y Y, Z T 7, W M R", read down a phone line by someone who has never seen the format. |
 
 Each of those has the same shape: it cannot be resolved by reasoning, and it cannot be revisited after 1.0.
 
@@ -86,7 +86,7 @@ script   ▽ ▽ ▽ ▽ ▽ ▽ ▽ ▽ ▽ ▽ ▽ ▽ ▽ ▽ ▽ ▽ ▽ ▽
 The consequences follow directly from that, and they are the reason for choosing it:
 
 - **The grid does not change.** Nothing in §03 or §04 is touched. Encoding still produces the same three block indices; only the characters those indices are rendered with differ.
-- **A script code is the same address, not a related one.** It is a rendering, the way a phone number is the same number in any numeral system. Convert in either direction and you land on the same cell, exactly.
+- **A script code is the same address, not a related one.** It is a rendering, the way a phone number is the same number in any numeral system.
 - **Conformance stays one suite.** The Appendix A vectors continue to define correctness; a script mapping adds a table, not a second implementation.
 - **Nothing existing changes meaning.** The Latin form is untouched, which is the only version of this feature that can ship alongside a freeze.
 
@@ -101,7 +101,7 @@ The hard part is not the mechanism. It is that the properties §02 bought with t
 | Question | Why it is genuinely hard |
 |---|---|
 | **Which scripts, and in what order?** | Reach matters, but so does whether a script can supply thirty characters that are distinguishable in handwriting, in speech, and at small sizes. |
-| **Does "cannot spell a word" survive?** | The Latin set is vowel-free, so blocks cannot form words. An arbitrary 1:1 map into another script has no such guarantee. It could easily produce a three-character block that is a real word, or a slur, in that language. Each mapping needs the same screening the Latin set got. |
+| **Does "cannot spell a word" survive?** | The Latin set is vowel-free, so blocks cannot form words. An arbitrary 1:1 map into another script has no such guarantee: it could easily produce a three-character block that is a real word, or a slur, in that language. Each mapping needs the same screening the Latin set got. |
 | **Which characters are confusable in that script?** | Every script has its own 1/7 and 5/S. Only readers of that script can say which. |
 | **What about case, and about scripts with no case?** | Latin codes are case-insensitive. Scripts without case need an equivalent normalization rule, and scripts with different casing behaviour need it stated. |
 | **Digits: shared or mapped?** | The set contains 0–9. Some scripts have their own numerals; whether a code renders those or keeps ASCII digits is a readability decision, not a technical one. |
@@ -117,10 +117,10 @@ There is one conformant implementation today: [`placepin-js`](https://github.com
 [§10](/spec/spec#_10-·-versioning-prior-art-open-questions) lists this as open, and the shape of the work is unusually friendly:
 
 - **The spec is the hard part, and it is done.** An implementation is `encode`, `decode`, and the partition routine from §03; the reference is about three kilobytes gzipped. There is no state, no I/O, no dependencies to bind.
-- **Conformance is a file, not a judgement.** Every implementation consumes the same [`vectors.json`](https://github.com/placepin-org/placepin-spec/blob/main/vectors.json) from the same tagged release. Reproduce every row exactly, hold the §03 invariants, and it conforms. Nobody retypes Appendix A, and no port gets to mark its own exam paper.
+- **Conformance is a file, not a judgement.** Every implementation consumes the same [`vectors.json`](https://github.com/placepin-org/placepin-spec/blob/main/vectors.json) from the same tagged release. Reproduce every row exactly, hold the §03 invariants, and it conforms.
 - **The traps are documented.** Cycling largest-remainder apportionment, last-row/column bound snapping, the finest-first write order, and the rule that a bare three-character string is always a region: each is stated normatively with the failure mode it prevents.
 
-Priority follows use: **Python** first (the spec names it), then the languages that put codes where they get used: **Rust and Go** for services and CLIs, **Swift and Kotlin/Java** for the phones people actually stand somewhere with, **C** for everything embedded. But that list is a guess about demand, not a plan; the port that actually happens is the one somebody wants.
+Priority follows use: **Python** first (the spec names it), then **Rust and Go** for services and CLIs, **Swift and Kotlin/Java** for the phones people actually stand somewhere with, and **C** for everything embedded. That list is a guess about demand, not a plan; the port that actually happens is the one somebody wants.
 
 Two rules for any port, both consequences of the draft status:
 
@@ -133,7 +133,7 @@ If you start one, [say hello](mailto:hello@placepin.org). The implementations ta
 
 Right now `placepin-spec`, `placepin-js` and this site are repositories under a single person's account, and the licences (CC BY 4.0 for the specification text, Apache-2.0 for the reference code) are [proposed rather than ratified](/spec/spec#_10-·-versioning-prior-art-open-questions). That is a reasonable state for a draft and an unreasonable one for infrastructure.
 
-The point of an open protocol is that it keeps working without asking anyone. A specification whose only steward is one individual account does not clear that bar: it has a single point of failure for the domain, the npm scope, the repositories and the right to say what a code means. §10 already states the requirement, that **the protocol's identity must survive the domain name**, and personal ownership is the most obvious way it currently does not.
+The point of an open protocol is that it keeps working without asking anyone. A specification whose only steward is one individual account does not clear that bar: it is a single point of failure for the domain, the npm scope, the repositories and the right to say what a code means. §10 already states the requirement, that **the protocol's identity must survive the domain name**, and personal ownership is the most obvious way it currently does not.
 
 So before the freeze:
 

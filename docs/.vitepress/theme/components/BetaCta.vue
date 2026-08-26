@@ -4,7 +4,7 @@
  *
  * Copy discipline from §10: v5 is a draft, nothing emitted before v5-final is
  * durable, and the letter Y is still unresolved. So this says what the beta
- * actually is — help decide the open questions — rather than implying the
+ * actually is (help decide the open questions) rather than implying the
  * codes handed out during it will still mean the same places afterwards.
  */
 import { APP, BETA_FORM } from '../links.js';

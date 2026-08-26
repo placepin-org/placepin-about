@@ -1,4 +1,4 @@
-# Not an SPA fallback — VitePress emits real pages, and Cloudflare Pages serves
+# Not an SPA fallback. VitePress emits real pages, and Cloudflare Pages serves
 # 404.html on its own. These are the shorthands people will type or paste.
 
 /spec       /spec/spec   301

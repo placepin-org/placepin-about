@@ -30,7 +30,7 @@ export default defineConfig({
     // arriving from the app already has them cached. Share Tech Mono carries
     // the codes, IBM Plex Mono the labels; Share Tech Mono ships one weight.
     //
-    // Deliberately the CDN here and not self-hosted — see CLAUDE.md. This is a
+    // Deliberately the CDN here and not self-hosted; see CLAUDE.md. This is a
     // documentation site with no service worker; placepin.org is the offline
     // artifact, and it is the one that vendors its own faces.
     [
@@ -46,7 +46,7 @@ export default defineConfig({
 
   markdown: {
     /**
-     * Give a placepin code the code face — and only a placepin code.
+     * Give a placepin code the code face, and only a placepin code.
      *
      * Share Tech Mono means "this is an address". A CSS rule on `.vp-doc code`
      * cannot tell the difference between `PYY-ZT7-WMR` and `placepin-spec`, so
@@ -54,8 +54,8 @@ export default defineConfig({
      * which spends the signal on things that are not addresses.
      *
      * markdown-it can tell, because it sees the content. Anything matching the
-     * canonical shape — 3, 6 or 9 characters from the alphabet, optionally
-     * hyphenated — gets tagged and tier-coloured; everything else stays in IBM
+     * canonical shape (two or three hyphenated blocks from the alphabet) gets
+     * tagged and tier-coloured; everything else stays in IBM
      * Plex Mono. This runs over the synced specification too, which is the
      * point: those are the codes a reader most needs to recognise, and that
      * file cannot be edited to use a component.
@@ -63,7 +63,7 @@ export default defineConfig({
     config(md) {
       const BLOCK = '[0-9BCDFGHJKMNPQRSTVWXYZ]{3}';
       /**
-       * Two blocks or three — never a bare one.
+       * Two blocks or three, never a bare one.
        *
        * A lone three-character string is the single most argued-over input in
        * the specification: normatively it decodes as a region (§01), but the
@@ -75,7 +75,7 @@ export default defineConfig({
        */
       const CODE = new RegExp(`^${BLOCK}(-${BLOCK}){1,2}$`);
       // Finest-first, so the last block is always the region and a short code
-      // is the coarse tail. §01 — never the other way round.
+      // is the coarse tail. §01, never the other way round.
       const TIERS = ['local', 'area', 'region'];
 
       const fallback = md.renderer.rules.code_inline;
@@ -96,7 +96,7 @@ export default defineConfig({
     },
 
     /**
-     * SPEC.md is written with meaningful line breaks — the header block, and
+     * SPEC.md is written with meaningful line breaks: the header block, and
      * every normative blockquote, put the label and the rule on separate
      * lines. Collapsing those into a run turns "**Core principle** The code
      * does not need to be a word" into one sentence that reads as neither.
@@ -108,15 +108,13 @@ export default defineConfig({
   },
 
   themeConfig: {
-    // No logo image — §07: the identity is the lowercase wordmark, no pin icon.
-    // The site title is rendered by the theme's own nav-bar-title override so
-    // the full stop can carry its terracotta.
-    // v-html, so the full stop can carry the leaf terracotta the way the
-    // placepin.org wordmark does.
+    // No logo image. §07: the identity is the lowercase wordmark, no pin icon.
+    // Rendered with v-html, so the full stop can carry the leaf terracotta the
+    // way the placepin.org wordmark does.
     siteTitle: 'about.placepin<span class="pp-stop">.</span>org',
 
-    // Seven items plus the sidebar offset overflowed the bar at 1280px — a
-    // very ordinary laptop — pushing the theme toggle and the GitHub link off
+    // Seven items plus the sidebar offset overflowed the bar at 1280px, a
+    // very ordinary laptop, pushing the theme toggle and the GitHub link off
     // the right edge where nothing could reach them. There is no "Overview"
     // entry because the wordmark is already the link home, which is the
     // convention everywhere else.
@@ -228,7 +226,7 @@ export default defineConfig({
     socialLinks: [{ icon: 'github', link: 'https://github.com/placepin-org' }],
 
     // Authored pages only. The specification page turns this off in its own
-    // frontmatter and carries a note pointing at placepin-spec instead —
+    // frontmatter and carries a note pointing at placepin-spec instead:
     // editing the rendered copy would be editing a build artifact.
     editLink: {
       pattern: 'https://github.com/placepin-org/placepin-about/edit/main/docs/:path',

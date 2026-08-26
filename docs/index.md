@@ -25,9 +25,9 @@ features:
   - title: An equal-area grid, computed live
     details: >-
       Three nested dive-downs, each splitting its parent box into 27,000 cells
-      by a deterministic apportionment routine. There is no precompute step and
-      no index: every encode and decode partitions on the fly, which is what
-      lets a client work with no network at all.
+      by a deterministic apportionment routine. No precompute step and no
+      index: every encode and decode partitions on the fly, which is what lets
+      a client work with no network at all.
     link: /spec/spec#_03-·-the-grid
     linkText: The grid, normatively
 
@@ -42,8 +42,8 @@ features:
   - title: Every truncation is a real address
     details: >-
       Drop the leading blocks and what remains still decodes, first to the
-      ≈840 m area, then to the ≈137 km region. A coarser code is a first-class address,
-      not a degraded one.
+      ≈840 m area, then to the ≈137 km region. A coarser code is a first-class
+      address, not a degraded one.
     link: /spec/spec#_01-·-anatomy-of-a-code
     linkText: Anatomy of a code
 
@@ -79,17 +79,15 @@ placepin turns a latitude and longitude into a nine-character address, and back 
 
 <PinCode code="PYY-ZT7-WMR" />
 
-That code names a cell roughly five metres on a side: a doorway, a gate, a particular corner of a field. It is short enough to say down a phone, fixed enough in shape to type without a keyboard fighting you, and computable in both directions with about three kilobytes of code and no network.
+That code names a cell roughly five metres on a side: a doorway, a gate, a particular corner of a field. It is short enough to say down a phone, and computable in both directions with about three kilobytes of code and no network.
 
-The protocol exists because the alternatives each give up something specific. Plus Codes are longer at comparable precision. what3words is proprietary and its word lists are a licensing dependency. Geohash contains vowels, so its codes can and do spell things. A bare latitude and longitude is precise and completely unsayable. [Why another protocol](/why) makes that case properly, including the parts that do not favour placepin.
-
-placepin's own honest disadvantages are stated in the specification rather than buried: there is **no checksum**, the conformance burden is floating-point, and the truncation direction is unfamiliar. [§10 lays them out plainly](/spec/spec#_10-·-versioning-prior-art-open-questions) alongside the claims.
+The alternatives each give up something specific. [Why another protocol](/why) makes that case in full, including the parts that do not favour placepin.
 
 ## The one thing that surprises everyone
 
 A code is written **finest to coarsest**, left to right. The most specific block comes first, because that is the part a person is actually told. Nobody knows which of 27,000 global regions they are standing in, but "the gate at `PYY`" is a thing someone can say to you.
 
-The cost of that ordering is that truncation runs **right to left**, which is backwards from every prefix system you have met:
+The cost is that truncation runs **right to left**, backwards from every prefix system you have met:
 
 <TruncationLadder />
 
@@ -99,21 +97,15 @@ The same rule kills prefix indexes. Two codes sharing a leading block are usuall
 
 ## There is no check character
 
-This is a deliberate omission, not an oversight, and it has a real consequence worth stating in plain language: **every corrupted code is still a valid address, somewhere.** A typo does not produce an error. It produces a different, real place, possibly on another continent.
+A deliberate omission, not an oversight, and the consequence is worth stating plainly: **every corrupted code is still a valid address, somewhere.** A typo does not produce an error. It produces a different, real place, possibly on another continent.
 
 The specification's position is that the fix belongs in the product, not the format. Anything built on placepin should preview the cell on a map and have a person confirm it before that location is acted on. A code should never be routed straight to a navigation handoff.
 
-## Where the draft actually stands
+## Where the draft stands
 
-Protocol **v5** is a draft, and [§10](/spec/spec#_10-·-versioning-prior-art-open-questions) is unusually direct about what that means: nothing emitted before v5-final is a durable code. The grid, the apportionment rule, the boundary ownership and the normalization are all resolved. What is not resolved is human:
+Protocol **v5** is a draft, and [§10](/spec/spec#_10-·-versioning-prior-art-open-questions) is direct about what that means: nothing emitted before v5-final is a durable code. The grid, the apportionment rule, the boundary ownership and the normalization are all resolved. What is not resolved is human: whether the letter `Y` survives transcription trials, whether the confusable pairs hold up when a code is spoken or handwritten, and whether writing the spot first is genuinely easier to use.
 
-- **The letter `Y`.** It behaves as a semi-vowel: `SKY`, `GYM`, and at least one three-letter Y-word that is a slur. If Y is dropped, the alphabet becomes 29 characters and **every code that exists changes meaning**, with no checksum to catch it.
-- **The confusable pairs.** 1/7 in European handwriting, 2/Z, 5/S and 8/B by sight, M/N over a phone. All still in the set, all awaiting transcription trials.
-- **The block order itself**, which is considered actively unstable until the proximity-aware input it was meant to enable has been tried by real people.
-
-Governance is the other open question, and it is not technical: the specification, the reference implementation and this site are one person's repositories today. A protocol meant to outlive its own domain name cannot stay that way, so [moving it to an open-source organisation](/next#an-open-source-organisation) is on the road to the freeze rather than filed under someday.
-
-Freezing those is what the beta is for. The freeze is `1.0`, not a release number that happens next. [What's next](/next) lays out the road there, including what a 1.0 has to carry: **codes in non-Latin scripts**, mapped one-to-one onto the existing thirty characters so a script code is the same address rather than a related one. Which scripts, and which characters within them, is explicitly a decision for the people who read them.
+Settling those is what the beta is for. [What's next](/next) lays out the road to the freeze, including what a 1.0 has to carry: **codes in non-Latin scripts**, mapped one-to-one onto the existing thirty characters so a script code is the same address rather than a related one, and a move off one person's repositories to [an open-source organisation](/next#an-open-source-organisation).
 
 ## The source
 
